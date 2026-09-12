@@ -9,7 +9,7 @@ curl: (6) Could not resolve host: https
 -bash: //tailscale.com: No such file or directory
 ```
 
-The command I typed was `curl -I https://tailscale.com`, which should have worked. No screenshot of this one — the keymap was fixed before I started capturing, so the error text is transcribed from my session.
+The command I typed was `curl -I https://tailscale.com`, which should have worked.
 
 ## Environment
 
@@ -43,12 +43,25 @@ If the command is missing, install it first:
 apt install kbd -y
 ```
 
-After that, colons and pipes typed correctly and the same curl command returned HTTP/2 200.
+After that, colons and pipes typed correctly and the same curl command returned a full response:
 
-![curl returning HTTP/2 200 after fixing the keymap](../screenshots/curl-headers-success.png)
+```
+root@ts-vps-01:~# curl -I https://tailscale.com
+HTTP/2 200
+date: Sat, 12 Sep 2026 01:26:23 GMT
+content-type: text/html; charset=utf-8
+content-length: 279111
+server: nginx/1.30.3
+cache-control: public, max-age=0, must-revalidate
+strict-transport-security: max-age=63072000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+```
 
 ## Notes
 
 The keymap does not persist. Every new console session starts on the German layout again, so `loadkeys us` has to be run each time. Once Tailscale SSH was working, this stopped mattering — SSH from my own laptop uses my own keyboard layout.
 
 Worth remembering as a general troubleshooting pattern: when one command line produces two errors, the shell split the line. That points at the input, not at the command.
+
+A side note on the curl output above: `curl -I` against any site is a quick way to read its security posture. This response shows HSTS enabled, MIME sniffing disabled, and a content security policy in place. It also discloses the exact web server version, which is the kind of detail that narrows down which CVEs an attacker would try first.
