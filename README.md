@@ -18,8 +18,8 @@ some connections go direct while others land on a relay.
 | Node | Role | Notes |
 |------|------|-------|
 | Windows laptop | Client | Behind home NAT |
-| Ubuntu Server 24.04 (VM) | Subnet router / exit node | Bridged adapter, home LAN |
-| Hetzner VPS (Ubuntu 24.04) | Public node | Public IP, no NAT — used to compare direct vs relayed paths |
+| Ubuntu Server 26.04 LTS (VM) | Subnet router / exit node | Bridged adapter, home LAN |
+| Hetzner VPS (Ubuntu 26.04 LTS) | Public node | Public IP, no NAT — used to compare direct vs relayed paths |
 | Phone | Mobile client | Tested on cellular to force out-of-network paths |
 
 Having one node behind NAT and one with a public IP is intentional: it makes
