@@ -13,7 +13,7 @@ The command I typed was `curl -I https://tailscale.com`, which should have worke
 
 ## Environment
 
-- Hetzner Cloud VPS, Ubuntu 24.04, Nuremberg
+- Hetzner Cloud VPS, Ubuntu 26.04 LTS, Nuremberg
 - Cloud firewall with no inbound rules, so no SSH access yet
 - Working through Hetzner's browser-based console (out-of-band access, same idea as iDRAC or iLO on physical servers)
 
