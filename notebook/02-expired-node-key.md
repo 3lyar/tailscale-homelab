@@ -28,7 +28,7 @@ unexpected state: NoState
 
 ## Investigation
 
-The laptop error message was misleading on its own — it looked like the service had simply not finished starting. But the admin console and the VPS both reported the device as expired and offline, which pointed at authentication rather than at the local service.
+The laptop error message was misleading on its own - it looked like the service had simply not finished starting. But the admin console and the VPS both reported the device as expired and offline, which pointed at authentication rather than at the local service.
 
 Both views agreed that the device was known to the tailnet but not currently allowed into it.
 
@@ -50,14 +50,15 @@ This opened a browser window to sign in again. After authenticating, the expired
 
 ## Why this matters operationally
 
-Key expiry on a user device is a small annoyance — you sign in again and carry on.
+Key expiry on a user device is a small annoyance - you sign in again and carry on.
 
 On an infrastructure node it is an outage. If a subnet router's key expires, the routes it advertises disappear and every device that depended on them loses access to that network. Nothing obvious has changed, nothing was reconfigured, and the cause is not visible from the affected side.
 
-So for nodes that act as subnet routers or exit nodes, key expiry should be disabled in the admin console (device menu → Disable key expiry). I did this for `ts-vps-01`.
+So for nodes that act as subnet routers or exit nodes, key expiry should be disabled in the admin console (device menu â†’ Disable key expiry). I did this for `ts-vps-01`.
 
 The trade-off is the usual one: a long-lived credential is convenient and less secure. For a server under my control that is the right choice, but it is a decision worth making deliberately rather than by default.
 
 ## Comparison
 
-This is the same failure mode as an expired TLS certificate — the service is fine, the configuration is fine, but a credential aged out and everything stops. In AWS terms it is closer to STS temporary credentials expiring mid-session.
+This is the same failure mode as an expired TLS certificate - the service is fine, the configuration is fine, but a credential aged out and everything stops. In AWS terms it is closer to STS temporary credentials expiring mid-session.
+

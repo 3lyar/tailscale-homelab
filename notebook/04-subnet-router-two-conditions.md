@@ -6,7 +6,7 @@
 
 
 
-A subnet router: one node on my home LAN that advertises the whole network to the tailnet, so devices outside can reach things that will never run Tailscale themselves — in this case a TP-Link HX510 mesh router.
+A subnet router: one node on my home LAN that advertises the whole network to the tailnet, so devices outside can reach things that will never run Tailscale themselves - in this case a TP-Link HX510 mesh router.
 
 
 
@@ -18,9 +18,9 @@ This is the same idea as a site-to-site VPN advertising a remote subnet, except 
 
 
 
-- `ubuntuservervmvbox` — Ubuntu Server 26.04 LTS in VirtualBox, bridged adapter, `192.168.88.14/24` on the home LAN
+- `ubuntuservervmvbox` - Ubuntu Server 26.04 LTS in VirtualBox, bridged adapter, `192.168.88.14/24` on the home LAN
 
-- `els26ultra` — Android phone, tested on cellular with Wi-Fi off so it is genuinely outside the LAN
+- `els26ultra` - Android phone, tested on cellular with Wi-Fi off so it is genuinely outside the LAN
 
 - Target: `192.168.88.1`, the router's admin page
 
@@ -62,7 +62,7 @@ The VM reaches the router locally without trouble:
 
 
 
-From the phone on cellular, the same address fails — no route exists, so the request has nowhere to go.
+From the phone on cellular, the same address fails - no route exists, so the request has nowhere to go.
 
 
 
@@ -86,7 +86,7 @@ sudo tailscale set --advertise-routes=192.168.88.0/24
 
 
 
-The CIDR comes straight from the routing table above. Getting the prefix length wrong here is a quiet failure — advertise a /24 on a /23 network and half the range silently does not route.
+The CIDR comes straight from the routing table above. Getting the prefix length wrong here is a quiet failure - advertise a /24 on a /23 network and half the range silently does not route.
 
 
 
@@ -134,7 +134,7 @@ So advertising a route does not enable it. Two separate things were still missin
 
 
 
-## Condition 1 — IP forwarding on the node
+## Condition 1 - IP forwarding on the node
 
 
 
@@ -142,7 +142,7 @@ By default a Linux machine only accepts packets addressed to itself. A packet ar
 
 
 
-This is the difference between a host and a router. The same distinction as a Layer 2 switch versus a Layer 3 switch after routing is enabled, or a Cisco device before `ip routing` — interfaces up, addresses assigned, and still nothing forwarded. In AWS it is the source/destination check attribute on an EC2 instance, which you disable for exactly this reason on a NAT instance.
+This is the difference between a host and a router. The same distinction as a Layer 2 switch versus a Layer 3 switch after routing is enabled, or a Cisco device before `ip routing` - interfaces up, addresses assigned, and still nothing forwarded. In AWS it is the source/destination check attribute on an EC2 instance, which you disable for exactly this reason on a NAT instance.
 
 
 
@@ -190,11 +190,11 @@ The health check disappeared from `tailscale status`.
 
 
 
-**Tested from the phone again at this point — still failed.** That test mattered. Fixing both conditions at once would have told me nothing about which one did what.
+**Tested from the phone again at this point - still failed.** That test mattered. Fixing both conditions at once would have told me nothing about which one did what.
 
 
 
-## Condition 2 — approval in the admin console
+## Condition 2 - approval in the admin console
 
 
 
@@ -206,7 +206,7 @@ The route was still listed as Awaiting Approval. Approving it in the admin conso
 
 
 
-Same phone, same cellular connection, different result — the only change was a route existing where one did not before.
+Same phone, same cellular connection, different result - the only change was a route existing where one did not before.
 
 
 
@@ -218,7 +218,7 @@ Any node can *claim* to route any subnet. If advertising were enough, a single c
 
 
 
-Approval moves that decision to the control plane, where an administrator makes it. The node proposes, the tailnet decides. It is the same separation as a routing protocol with authentication versus accepting any advertisement that arrives — and the reason BGP hijacking is a phrase that exists.
+Approval moves that decision to the control plane, where an administrator makes it. The node proposes, the tailnet decides. It is the same separation as a routing protocol with authentication versus accepting any advertisement that arrives - and the reason BGP hijacking is a phrase that exists.
 
 
 
@@ -234,7 +234,7 @@ The two failures announce themselves very differently.
 
 
 
-**An unapproved route is silent on the node.** Nothing in `tailscale status`, no error, no log entry — the node has done its part correctly and has nothing to report. The only evidence lives in the admin console.
+**An unapproved route is silent on the node.** Nothing in `tailscale status`, no error, no log entry - the node has done its part correctly and has nothing to report. The only evidence lives in the admin console.
 
 
 
@@ -250,6 +250,7 @@ The router is a TP-Link HX510 mesh AP. There is no Tailscale client for it and n
 
 
 
-One node that can run Tailscale makes all of them reachable. That is the entire argument for subnet routers, and it is why a traditional client VPN model — where every device needs the client — does not cover the same ground.
+One node that can run Tailscale makes all of them reachable. That is the entire argument for subnet routers, and it is why a traditional client VPN model - where every device needs the client - does not cover the same ground.
+
 
 

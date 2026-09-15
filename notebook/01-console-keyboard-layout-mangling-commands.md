@@ -23,13 +23,13 @@ The interesting part is that one command produced two separate errors.
 
 The first error shows curl received `https` on its own as a hostname. The second shows bash trying to execute `//tailscale.com` as a command of its own.
 
-For bash to treat those as two commands, it had to see a command separator between them — a semicolon. So the colon I typed was not arriving as a colon.
+For bash to treat those as two commands, it had to see a command separator between them - a semicolon. So the colon I typed was not arriving as a colon.
 
 ## Cause
 
 The Hetzner console passes raw keyboard scancodes to the VM rather than text, and the VM was using a German QWERTZ keymap. On that layout, `:` and `;` are on the same key with opposite shift states. Every colon I typed arrived as a semicolon.
 
-Hetzner is a German provider, so the default keymap makes sense — it just does not match the physical keyboard I am typing on.
+Hetzner is a German provider, so the default keymap makes sense - it just does not match the physical keyboard I am typing on.
 
 ## Resolution
 
@@ -60,8 +60,9 @@ x-xss-protection: 1; mode=block
 
 ## Notes
 
-The keymap does not persist. Every new console session starts on the German layout again, so `loadkeys us` has to be run each time. Once Tailscale SSH was working, this stopped mattering — SSH from my own laptop uses my own keyboard layout.
+The keymap does not persist. Every new console session starts on the German layout again, so `loadkeys us` has to be run each time. Once Tailscale SSH was working, this stopped mattering - SSH from my own laptop uses my own keyboard layout.
 
 Worth remembering as a general troubleshooting pattern: when one command line produces two errors, the shell split the line. That points at the input, not at the command.
 
 A side note on the curl output above: `curl -I` against any site is a quick way to read its security posture. This response shows HSTS enabled, MIME sniffing disabled, and a content security policy in place. It also discloses the exact web server version, which is the kind of detail that narrows down which CVEs an attacker would try first.
+
