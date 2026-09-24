@@ -54,7 +54,7 @@ Key expiry on a user device is a small annoyance - you sign in again and carry o
 
 On an infrastructure node it is an outage. If a subnet router's key expires, the routes it advertises disappear and every device that depended on them loses access to that network. Nothing obvious has changed, nothing was reconfigured, and the cause is not visible from the affected side.
 
-So for nodes that act as subnet routers or exit nodes, key expiry should be disabled in the admin console (device menu â†’ Disable key expiry). I did this for `ts-vps-01`.
+So for nodes that act as subnet routers or exit nodes, key expiry should be disabled in the admin console (device menu → Disable key expiry). I did this for `ts-vps-01`.
 
 The trade-off is the usual one: a long-lived credential is convenient and less secure. For a server under my control that is the right choice, but it is a decision worth making deliberately rather than by default.
 

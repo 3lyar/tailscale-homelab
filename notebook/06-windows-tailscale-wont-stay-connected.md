@@ -88,11 +88,11 @@ The same pattern repeated all through the log, a few milliseconds apart:
 
 ```
 
-client connected (TEHAMElyar Abedini): switching to profile (fbd4)
+client connected (TEHAM\Elyar Abedini): switching to profile (fbd4)
 
 ...
 
-client disconnected (TEHAMElyar Abedini): disconnecting Tailscale
+client disconnected (TEHAM\Elyar Abedini): disconnecting Tailscale
 
 ```
 
@@ -106,7 +106,7 @@ At one point it actually reached a working connection, then dropped it 10 millis
 
 01:09:15.122 Switching ipn state Starting -> Running (WantRunning=true, nm=true)
 
-01:09:15.132 client disconnected (TEHAMElyar Abedini): disconnecting Tailscale
+01:09:15.132 client disconnected (TEHAM\Elyar Abedini): disconnecting Tailscale
 
 ```
 
@@ -118,9 +118,9 @@ The log also showed Tailscale disconnecting when I signed in and when I locked t
 
 ```
 
-TEHAMElyar Abedini signed in to session 1: disconnecting Tailscale
+TEHAM\Elyar Abedini signed in to session 1: disconnecting Tailscale
 
-TEHAMElyar Abedini locked session 1: disconnecting Tailscale
+TEHAM\Elyar Abedini locked session 1: disconnecting Tailscale
 
 ```
 

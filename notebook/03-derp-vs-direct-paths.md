@@ -109,10 +109,10 @@ It still relayed the first packet before switching. Tailscale does not assume a 
 
 | Path | How it connected | Latency |
 |---|---|---|
-| Laptop â†’ VPS (Nuremberg) | Direct, public IP | 97ms |
-| Laptop â†’ phone on cellular | DERP (Toronto) | 28ms |
-| Laptop â†’ phone on cellular | Direct, carrier NAT | 35ms |
-| Laptop â†’ phone on Wi-Fi | Direct, LAN | 8ms |
+| Laptop → VPS (Nuremberg) | Direct, public IP | 97ms |
+| Laptop → phone on cellular | DERP (Toronto) | 28ms |
+| Laptop → phone on cellular | Direct, carrier NAT | 35ms |
+| Laptop → phone on Wi-Fi | Direct, LAN | 8ms |
 
 ## What I took away
 
