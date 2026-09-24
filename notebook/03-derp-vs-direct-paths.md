@@ -50,7 +50,7 @@ VPS, in Nuremberg:
 
 Three things stand out.
 
-**The two DERP maps are mirror images.** Each node's nearest relay is whichever one is geographically closest to it. If these two ever fall back to a relay, they have to agree on a single region, so one of them will be far from it. That asymmetry is worth remembering - it explains why a relayed connection can feel fine for one person and slow for another on the same tailnet.
+**The two DERP maps are mirror images.** Each node picks the relay closest to it as its home. When two nodes fall back to relaying, each one sends to the other node's home relay, so the laptop reaches the VPS through Frankfurt and the VPS reaches the laptop through Toronto. The two directions can take different relays, and either way the relayed path between these two crosses the Atlantic through a relay that is close to one end and far from the other.
 
 **`MappingVariesByDestIP: false` on both.** This is the line that decides whether a direct connection is even possible. False means the NAT keeps the same public port mapping no matter which destination the traffic is going to. That predictability is what lets two peers tell each other where to send packets. If it were true - symmetric NAT - the router would allocate a different port per destination, the address discovered through STUN would be useless to a peer, and a direct connection would be impossible rather than just slow.
 
